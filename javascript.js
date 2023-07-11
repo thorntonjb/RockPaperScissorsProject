@@ -1,75 +1,80 @@
 function getComputerChoice()
 {
-    let choice = Math.floor(Math.random * 3) + 1;
+    let choice = Math.floor(Math.random() * 3 + 1);
+    console.log(choice);
+    let textChoice = "";
     if (choice == 1)
     {
-        return "Rock";
+        textChoice = "rock";
     }
     else if (choice == 2)
     {
-        return "Paper";
+        textChoice = "paper";
     }
-    else 
+    else // (choice == 3)
     {
-        return "Scissors";
+        textChoice = "scissors";
     }
+
+    return textChoice;
 }
 
-console.log("Welcome to RPS!");
 function startGame(playerSelection, computerSelection)
 {
-    playerSelection = prompt("What do you choose?");
-    console.log("you chose " + playerSelection);
+    //playerSelection = prompt("What do you choose?");
+    console.log("   you chose " + playerSelection);
 
-    computerSelection = getComputerChoice();
-    console.log("computer chose " + computerSelection.toLowerCase());
-    if (playerSelection.toLowerCase() == "rock")
+    console.log("   computer chose " + computerSelection);
+    if (playerSelection  == "rock")
     {
-        if (computerSelection.toLowerCase() == "paper")
+        if (computerSelection  == "paper")
         {
-            console.log("you lose");
+            return "you lose";
         }
-        if (computerSelection.toLowerCase() == "scissors")
+        if (computerSelection  == "scissors")
         {
-            console.log("you win");
+            return "you win";
         }
     }
-    if (playerSelection.toLowerCase() == "paper")
+    if (playerSelection  == "paper")
     {
-        if (computerSelection.toLowerCase() == "rock")
+        if (computerSelection  == "rock")
         {
-            console.log("you win");
+            return "you win";
         }
-        if (computerSelection.toLowerCase() == "scissors")
+        if (computerSelection  == "scissors")
         {
-            console.log("you lose");
+            return "you lose";
         }
     }
-    if (playerSelection.toLowerCase() == "scissors")
+    if (playerSelection  == "scissors")
     {
-        if (computerSelection.toLowerCase() == "paper")
+        if (computerSelection  == "paper")
         {
-            console.log("you win");
+            return "you win";
         }
-        if (computerSelection.toLowerCase() == "rock")
+        if (computerSelection  == "rock")
         {
-            console.log("you lose");
+            return "you lose";
         }
     }
-    if (playerSelection.toLowerCase() == computerSelection.toLowerCase())
+    if (playerSelection  == computerSelection)
     {
-        console.log("tie");
+        return "tie";
     }
 
 }
 
 function game()
 {
-    for(let i = 0; i < 5; i++)
+    const playerSelection = "rock";
+    for(let i = 0; i < 10; i++)
     {
-        startGame();
+        computerSelection = getComputerChoice();
+        console.log(startGame(playerSelection, computerSelection));
     }
 }
 
+console.log("Welcome to RPS!");
 game();
 
